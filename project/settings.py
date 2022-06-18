@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
-
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -96,16 +96,33 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'siaserver',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'siaserver',
+#         'USER': 'root', 
+#         'PASSWORD':'root', 
+#         'HOST':'localhost',
+#         'PORT':'3306'
+#     }
+# }
+
+
+DATABASES={}
+if DEBUG:    
+    DATABASES['default']={
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'siaserver',
         'USER': 'root', 
         'PASSWORD':'root', 
         'HOST':'localhost',
         'PORT':'3306'
     }
-}
+else:
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
+
+
 
 
 # Password validation
