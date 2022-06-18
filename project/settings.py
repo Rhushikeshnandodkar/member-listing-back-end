@@ -106,22 +106,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #         'PORT':'3306'
 #     }
 # }
+import os
 
-
-DATABASES={}
-if DEBUG:    
-    DATABASES['default']={
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'siaserver',
-        'USER': 'root', 
-        'PASSWORD':'root', 
-        'HOST':'localhost',
-        'PORT':'3306'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
-
+}
 
 
 
