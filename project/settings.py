@@ -107,7 +107,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #     }
 # }
 import os
-
+import django_heroku
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -165,3 +165,4 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
