@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        color: red;
+    }
+</style>
+<body>
+   <div class="text" style="color: rgb(57, 166, 234);"><h2> Hii Tere welcome to sinhgad industrial association.</h2>
+    </div>
+    <div class="ptext" style="color: rgb(245, 169, 89);"><h3>If you forgot your password then just paste below token in token field</h3></div>
+    <div class="token" style="font-size: 25px;color:black;border-radius: 5x; ">{{token}}</div>
+
+    <script>
+        function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
+    </script>
+</body>
+</html>
